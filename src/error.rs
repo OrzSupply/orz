@@ -19,6 +19,8 @@ pub enum OreError {
     BusRewardsInsufficient = 5,
     #[error("The claim amount cannot be greater than the claimable rewards")]
     ClaimTooLarge = 6,
+    #[error("The supply has reached 21M")]
+    TotalSupplyReached = 7,
 }
 
 impl From<OreError> for ProgramError {

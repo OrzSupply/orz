@@ -20,6 +20,9 @@ pub const TOKEN_DECIMALS: u8 = 9;
 /// One ORE token, denominated in units of nanoORE.
 pub const ONE_ORE: u64 = 10u64.pow(TOKEN_DECIMALS as u32);
 
+/// Capped supply at 21M.
+pub const TOTAL_SUPPLY: u64 = 21000000 * ONE_ORE;
+
 /// The duration of an epoch, in units of seconds.
 pub const EPOCH_DURATION: i64 = 60;
 
@@ -61,13 +64,13 @@ pub const PROOF: &[u8] = b"proof";
 pub const TREASURY: &[u8] = b"treasury";
 
 /// The name for token metadata.
-pub const METADATA_NAME: &str = "Ore";
+pub const METADATA_NAME: &str = "Orz";
 
 /// The ticker symbol for token metadata.
-pub const METADATA_SYMBOL: &str = "ORE";
+pub const METADATA_SYMBOL: &str = "ORZ";
 
 /// The uri for token metdata.
-pub const METADATA_URI: &str = "https://ore.supply/metadata.json";
+pub const METADATA_URI: &str = "https://orz.supply/metadata.json";
 
 /// Noise for deriving the mint PDA.
 pub const MINT_NOISE: [u8; 16] = [
@@ -76,21 +79,21 @@ pub const MINT_NOISE: [u8; 16] = [
 
 /// The addresses of the bus accounts.
 pub const BUS_ADDRESSES: [Pubkey; BUS_COUNT] = [
-    pubkey!("9ShaCzHhQNvH8PLfGyrJbB8MeKHrDnuPMLnUDLJ2yMvz"),
-    pubkey!("4Cq8685h9GwsaD5ppPsrtfcsk3fum8f9UP4SPpKSbj2B"),
-    pubkey!("8L1vdGdvU3cPj9tsjJrKVUoBeXYvAzJYhExjTYHZT7h7"),
-    pubkey!("JBdVURCrUiHp4kr7srYtXbB7B4CwurUt1Bfxrxw6EoRY"),
-    pubkey!("DkmVBWJ4CLKb3pPHoSwYC2wRZXKKXLD2Ued5cGNpkWmr"),
-    pubkey!("9uLpj2ZCMqN6Yo1vV6yTkP6dDiTTXmeM5K3915q5CHyh"),
-    pubkey!("EpcfjBs8eQ4unSMdowxyTE8K3vVJ3XUnEr5BEWvSX7RB"),
-    pubkey!("Ay5N9vKS2Tyo2M9u9TFt59N1XbxdW93C7UrFZW3h8sMC"),
+    pubkey!("38F53JbVmhu8ApqANgijxMsznrgVykts23qsbQRCR6NF"),
+    pubkey!("JAQ9fh75riwJ56hq9MfZZYYskGEvT6jq3XG5gmSFnGVi"),
+    pubkey!("CB18Ut9cXn6fwgTStdNnYpQWyWZ3VAwq9YDBD1azVKzX"),
+    pubkey!("2M1CoMN7uyjCg3JYcnLs7CYxMRfnabC4aRuPp7QqTRV2"),
+    pubkey!("8WETJQ2KcDcUA7PA2jMzBcPudko2RagQBf6pcXF6rVN4"),
+    pubkey!("CQnmYUJBnTZGT4iQU1iEjBmM1oyMb4h98AoTETrsQqLB"),
+    pubkey!("3WEH5D43hPVyQ2ZicR4ZYf3g8E3wr5na5BnWNEuLroPa"),
+    pubkey!("GqwdPTLizBcDs856CRurPTryWPPiG86YgDd7WbatM2SA"),
 ];
 
 /// The address of the mint metadata account.
-pub const METADATA_ADDRESS: Pubkey = pubkey!("2nXZSxfjELuRatcoY64yHdFLZFi3mtesxobHmsoU3Dag");
+pub const METADATA_ADDRESS: Pubkey = pubkey!("Eir4pmjx83z8MAUfTpCCxiAMCiumqKKcwtoZ7aqkPbgu");
 
 /// The address of the mint account.
-pub const MINT_ADDRESS: Pubkey = pubkey!("oreoN2tQbHXVaZsr3pf66A48miqcBXCDJozganhEJgz");
+pub const MINT_ADDRESS: Pubkey = pubkey!("3eEUXWsvEF3Mrd2m7VWWz9Akk7PirNJi9uZNcG93KoSM");
 
 /// The address of the treasury account.
-pub const TREASURY_ADDRESS: Pubkey = pubkey!("FTap9fv2GPpWGqrLj3o4c9nHH7p36ih7NbSWHnrkQYqa");
+pub const TREASURY_ADDRESS: Pubkey = pubkey!("12iUmMQWTzSpmgKxTP1vgWK4h7aBntNe114RdzEpeDz4");

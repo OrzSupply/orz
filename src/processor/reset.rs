@@ -1,6 +1,6 @@
 use solana_program::{
     account_info::AccountInfo, clock::Clock, entrypoint::ProgramResult,
-    program_error::ProgramError, pubkey::Pubkey, sysvar::Sysvar,
+    program_error::ProgramError, program_pack::Pack, pubkey::Pubkey, sysvar::Sysvar,
 };
 
 use crate::{
@@ -9,8 +9,10 @@ use crate::{
     state::{Bus, Treasury},
     utils::AccountDeserialize,
     BUS_COUNT, BUS_EPOCH_REWARDS, EPOCH_DURATION, MAX_EPOCH_REWARDS, SMOOTHING_FACTOR, START_AT,
-    TARGET_EPOCH_REWARDS, TREASURY,
+    TARGET_EPOCH_REWARDS, TOTAL_SUPPLY, TREASURY,
 };
+
+use spl_token::state::Mint;
 
 /// Reset sets up the Ore program for the next epoch. Its responsibilities include:
 /// 1. Reset bus account rewards counters.
@@ -92,9 +94,17 @@ pub fn process_reset<'a, 'info>(
     // Update reward rate for next epoch
     treasury.reward_rate = calculate_new_reward_rate(treasury.reward_rate, total_epoch_rewards);
 
+    // Capped supply at 21M
+    let mint_data = mint_info.data.borrow_mut();
+    let mint = Mint::unpack(&mint_data)?;
+    if mint.supply + total_epoch_rewards > TOTAL_SUPPLY {
+        return Err(OreError::TotalSupplyReached.into());
+    }
+
     // Fund treasury token account
     let treasury_bump = treasury.bump as u8;
     drop(treasury_data);
+    drop(mint_data);
     solana_program::program::invoke_signed(
         &spl_token::instruction::mint_to(
             &spl_token::id(),
