@@ -1,18 +1,18 @@
 [package]
-name = "ore-program"
+name = "orz-program"
 version = "1.2.0"
-description = "Ore is a digital currency you can mine from anywhere, at home or on your phone."
+description = "Orz is a digital currency you can mine from anywhere, at home or on your phone."
 edition = "2021"
 license = "Apache-2.0"
-homepage = "https://ore.supply"
-documentation = "https://ore.supply"
-repository = "https://github.com/hardhatchad/ore"
+homepage = "https://orz.supply"
+documentation = "https://orz.supply"
+repository = "https://github.com/OrzSupply/orz"
 readme = "./README.md"
 keywords = ["solana", "crypto", "mining"]
 
 [lib]
 crate-type = ["cdylib", "lib"]
-name = "ore"
+name = "orz"
 
 [features]
 no-entrypoint = []
